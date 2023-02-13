@@ -117,10 +117,15 @@ void EditorHelpSearch::_notification(int p_what) {
 			_update_icons();
 		} break;
 
-		case NOTIFICATION_ENTER_TREE: {
+		case NOTIFICATION_READY: {
 			connect("confirmed", callable_mp(this, &EditorHelpSearch::_confirmed));
 			_update_icons();
 		} break;
+		case NOTIFICATION_THEME_CHANGED:
+		case NOTIFICATION_ENTER_TREE: {
+			_update_icons();
+		} break;
+
 
 		case NOTIFICATION_PROCESS: {
 			// Update background search.
